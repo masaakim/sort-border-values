@@ -1,0 +1,19 @@
+{
+  "name": "sort-border-values",
+  "version": "0.0.1",
+  "description": "Sort values of CSS border propety",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/morishitter/sort-border-values/git"
+  },
+  "keywords": ["css","border","property","sort"],
+  "author": "Masaaki Morishita",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+  }
+}
