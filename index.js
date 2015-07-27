@@ -2,43 +2,48 @@ var border = require('css-border-property')
 var parse = border.parse
 var stringify = border.stringify
 
-function getKey (obj) {
-    return Object.keys(obj)[0]
-}
-
 module.exports = function (values, fmt) {
     var result = parse(values)
     var width, style, color
 
     result.forEach(function (decl, i) {
-        var prop = getKey(decl)
-        switch (prop) {
-            case 'width':
-                width = result[i]
+        switch (decl.property) {
+            case 'border-width':
+                width = decl.value
                 break
-            case 'style':
-                style = result[i]
+            case 'border-style':
+                style = decl.value
                 break
-            case 'color':
-                color = result[i]
+            case 'border-color':
+                color = decl.value
                 break
         }
     })
+    console.log(width, style, color)
 
     if (!fmt) fmt = 'wsc'
 
+    var parsed
     switch (fmt) {
         case 'wsc':
-            return [width, style, color]
+            parsed = [width, style, color]
+            break
         case 'wcs':
-            return [width, color, style]
+            parsed = [width, color, style]
+            break
         case 'swc':
-            return [style, width, color]
+            parsed = [style, width, color]
+            break
         case 'scw':
-            return [style, color, width]
+            parsed = [style, color, width]
+            break
         case 'cws':
-            return [color, width, style]
+            parsed = [color, width, style]
+            break
         case 'csw':
             return [color, style, width]
+            break
     }
+
+    return parsed.join(' ')
 }
