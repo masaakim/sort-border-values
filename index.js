@@ -19,7 +19,6 @@ module.exports = function (values, fmt) {
                 break
         }
     })
-    console.log(width, style, color)
 
     if (!fmt) fmt = 'wsc'
 
